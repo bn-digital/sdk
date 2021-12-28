@@ -1,17 +1,10 @@
-import { ApolloClient, ApolloLink, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
+import { FC, useEffect, useState } from 'react'
 import { setContext } from '@apollo/client/link/context'
 import { TokenProvider, useToken } from './Token'
-import { onError } from '@apollo/client/link/error'
 
 const ClientProvider: FC<Api.ClientContextProps> = ({ uri = '/graphql', production = false, children, ...props }) => {
   const { token } = useToken()
-
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors)
-      graphQLErrors.forEach(({ message, locations, path }) => console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`))
-    if (networkError) console.log(`[Network error]: ${networkError}`)
-  })
 
   const [link, setLink] = useState(createHttpLink({ fetch, uri }))
 
@@ -27,17 +20,13 @@ const ClientProvider: FC<Api.ClientContextProps> = ({ uri = '/graphql', producti
       )
   }, [token])
 
-  const client = useMemo(
-    () =>
-      new ApolloClient({
-        link,
-        queryDeduplication: true,
-        cache: new InMemoryCache({ resultCaching: production }),
-        connectToDevTools: !production,
-        ...props,
-      }),
-    [link],
-  )
+  const client = new ApolloClient({
+    link,
+    queryDeduplication: true,
+    cache: new InMemoryCache({ resultCaching: production }),
+    connectToDevTools: !production,
+    ...props,
+  })
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>
 }
