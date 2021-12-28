@@ -1,0 +1,6 @@
+{
+  "name": "@bn-digital/graphql-auth",
+  "dependencies": {
+    "graphql": "^16.2.0"
+  }
+}

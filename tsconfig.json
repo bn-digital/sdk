@@ -1,0 +1,24 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2017",
+    "declaration": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": [
+      "ES5",
+      "ES6",
+      "ES7",
+      "DOM"
+    ],
+    "moduleResolution": "Node",
+    "module": "CommonJS"
+  },
+  "typeAcquisition": {
+    "enable": true
+  }
+}
