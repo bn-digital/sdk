@@ -2,21 +2,19 @@
   "compileOnSave": true,
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "target": "ES2017",
+    "target": "ES6",
     "declaration": true,
+    "declarationDir": "types",
     "strict": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": [
-      "ES5",
-      "ES6",
-      "ES7",
-      "DOM"
-    ],
+    "lib": ["ES5", "ES6", "ES7", "DOM"],
     "moduleResolution": "Node",
-    "module": "CommonJS"
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "module": "ESNext"
   },
   "typeAcquisition": {
     "enable": true

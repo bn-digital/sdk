@@ -1,9 +1,16 @@
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
-import { FC, useEffect, useState } from 'react'
+import { ApolloClientOptions, ApolloProvider, createHttpLink, NormalizedCacheObject } from '@apollo/client'
+import { FC, PropsWithChildren, useEffect, useState } from 'react'
 import { setContext } from '@apollo/client/link/context'
 import { TokenProvider, useToken } from './Token'
+import { createClient } from '../createClient'
 
-const ClientProvider: FC<Api.ClientContextProps> = ({ uri = '/graphql', production = false, children, ...props }) => {
+interface ClientProvider extends ApolloClientOptions<NormalizedCacheObject> {
+  production?: boolean
+}
+
+export interface ClientProviderProps extends PropsWithChildren<Partial<ClientProvider>> {}
+
+export const ClientProvider: FC<ClientProviderProps> = ({ uri = '/graphql', production = true, children, ...props }) => {
   const { token } = useToken()
 
   const [link, setLink] = useState(createHttpLink({ fetch, uri }))
@@ -20,20 +27,13 @@ const ClientProvider: FC<Api.ClientContextProps> = ({ uri = '/graphql', producti
       )
   }, [token])
 
-  const client = new ApolloClient({
-    link,
-    queryDeduplication: true,
-    cache: new InMemoryCache({ resultCaching: production }),
-    connectToDevTools: !production,
-    ...props,
-  })
+  const client = createClient({ ...props, link }, production)
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>
 }
-export default (props: Api.ClientContextProps) => (
-  <TokenProvider>
+
+export default (props: ClientProviderProps) => (
+  <TokenProvider type={'jwt'}>
     <ClientProvider {...props} />
   </TokenProvider>
 )
-
-export { ClientProvider }

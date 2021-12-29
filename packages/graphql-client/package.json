@@ -1,11 +1,35 @@
 {
   "name": "@bn-digital/graphql-client",
-  "version": "1.0.8",
-  "files": [
-    "dist"
+  "version": "1.0.19",
+  "author": {
+    "email": "dev@bndigital.co",
+    "name": "BN Digital",
+    "url": "https://github.com/bn-digital"
+  },
+  "maintainers": [
+    {
+      "email": "dev@bndigital.co",
+      "name": "BN Digital",
+      "url": "https://github.com/bn-digital"
+    }
   ],
-  "types": "dist",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "typings"
+  ],
+  "typings": "typings",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bn-digital/sdk",
+    "directory": "packages/graphql-client"
+  },
+  "bugs": {
+    "url": "https://github.com/bn-digital/sdk/issues"
+  },
+  "bundledDependencies": true,
   "scripts": {
     "build": "tsc -p .",
     "release": "yarn build && yarn npm publish"
@@ -17,9 +41,12 @@
     "@apollo/client": "^3.5.6",
     "cross-fetch": "^3.1.4",
     "graphql": "^16.2.0",
-    "react": "^17.0.2"
+    "jwt-decode": "^3.1.2",
+    "react": "^17.0.2",
+    "react-use-localstorage": "^3.5.3"
   },
   "devDependencies": {
+    "@types/node": "^17.0.5",
     "@types/react": "^17.0.38",
     "typescript": "^4.5.4"
   }
