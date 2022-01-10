@@ -1,6 +1,12 @@
 {
-  "name": "@bn-digital/antd",
-  "version": "1.0.1",
+  "name": "@bn-digital/cli",
+  "description": "SDK & utility used in BN Digital projects",
+  "version": "1.0.0",
+  "license": "MIT",
+  "bin": "bin/index.js",
+  "keywords": [
+    "marker.io"
+  ],
   "types": "typings",
   "main": "dist/index.js",
   "files": [
@@ -28,20 +34,16 @@
   ],
   "scripts": {
     "build": "tsc -p .",
+    "bn": "ts-node src/index.ts",
     "release": "yarn build && yarn npm publish"
   },
-  "peerDependenciesMeta": {
-    "antd": {
-      "optional": false
-    }
-  },
   "dependencies": {
-    "antd": "^4.18.2",
-    "react": "^17.0.2",
-    "react-responsive": "^9.0.0-beta.5"
+    "@octokit/graphql": "^4.8.0",
+    "commander": "^8.3.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.38",
+    "@types/node": "^17.0.8",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   }
 }

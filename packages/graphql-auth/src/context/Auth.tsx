@@ -35,15 +35,15 @@ export function UserProvider<T = any>({ query, children }: PropsWithChildren<Use
 
   useEffect(() => {
     token &&
-      !user &&
       meQuery()
         .then(result => {
+          result.error && setToken('')
           !result.error && !result.loading && result.data && setAuthenticated(true)
           return result.data
         })
         .then(profile => profile && setUser(profile))
         .catch(() => setToken(''))
-  }, [meQuery, user, token])
+  }, [meQuery, token])
 
   return (
     <UserContext.Provider

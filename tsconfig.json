@@ -1,20 +1,32 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "target": "ES6",
+    "checkJs": false,
     "declaration": true,
-    "declarationDir": "types",
-    "strict": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
+    "declarationDir": "typings",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "lib": ["ES5", "ES6", "ES7", "DOM"],
+    "incremental": true,
+    "inlineSourceMap": true,
+    "lib": [
+      "ESNext",
+      "ES5",
+      "ES6",
+      "ES7",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "CommonJS",
     "moduleResolution": "Node",
-    "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "module": "ESNext"
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "target": "ES6"
   },
   "typeAcquisition": {
     "enable": true

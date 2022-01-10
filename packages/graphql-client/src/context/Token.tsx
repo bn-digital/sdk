@@ -8,13 +8,15 @@ export enum LocalStorage {
 
 type TokenType = 'jwt' | 'unknown'
 
-type TokenProviderProps<T = any> = {
+type PayloadType = Record<string, string|number|boolean|null|undefined>
+
+type TokenProviderProps<T = PayloadType> = {
   type: TokenType
   token: string
   payload: T
 }
 
-export interface TokenContextProps extends TokenProviderProps {
+export interface TokenContextProps<T = any> extends TokenProviderProps<T> {
   setToken: Dispatch<string>
 }
 
@@ -56,6 +58,6 @@ export const TokenProvider: FC<Partial<TokenProviderProps>> = ({ type = 'jwt', c
 /**
  * Hook provides access to user entity (if authorized), token header value and login method (if unauthorized)
  */
-export function useToken(): TokenContextProps {
+export function useToken<T = any>(): TokenContextProps<T> {
   return useContext<TokenContextProps>(TokenContext)
 }
