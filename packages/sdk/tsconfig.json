@@ -3,8 +3,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "lib": ["DOM"],
+    "lib": ["DOM", "ES5"],
     "outDir": "dist",
+    "inlineSourceMap": true,
     "declarationDir": "typings"
   },
   "include": [

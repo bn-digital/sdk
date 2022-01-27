@@ -5,6 +5,7 @@
     "baseUrl": ".",
     "outDir": "dist",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "sourceMap": true,
     "declarationDir": "typings"
   },
   "include": ["src"]

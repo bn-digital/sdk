@@ -4,6 +4,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "outDir": "dist",
+    "inlineSourceMap": true,
     "lib": ["DOM", "es2021.intl", "DOM.Iterable", "ESNext"],
     "declarationDir": "typings"
   },

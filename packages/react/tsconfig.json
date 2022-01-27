@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "declarationDir": "typings",
     "jsx": "react-jsx",
+    "inlineSourceMap": true,
     "outDir": "dist"
   },
   "include": ["src"]
