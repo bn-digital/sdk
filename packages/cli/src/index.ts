@@ -1,8 +1,14 @@
-import { createCommand } from 'commander'
-import packageJson from '../package.json'
-import { github } from './commands/github'
-import { vault } from './commands/vault'
+import { Command } from 'commander'
 
-const command = createCommand('bn').version(packageJson.version).addCommand(vault).addCommand(github)
+import { command as lintCommand } from './lint'
+import { command as projectCommand } from './project'
 
-command.parse(process.argv)
+const command = new Command('bn')
+command.addCommand(projectCommand)
+command.addCommand(lintCommand)
+
+function run(args: string[]) {
+  return command.parse(args)
+}
+
+export { run }

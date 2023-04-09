@@ -8,15 +8,12 @@ interface WidgetOptions {
   reporter: { email: string; fullName: string }
 }
 
-type Options = Partial<WidgetOptions> & Pick<WidgetOptions, 'destination'> & { enabled?: boolean }
+type Options = WidgetOptions
 
-const defaultOptions: Readonly<Options> = { enabled: process.env.NODE_ENV === 'production' ?? false, destination: '' } as const
-
-async function initMarker(options: Options = defaultOptions) {
-  const { enabled, ...widgetOptions } = options
-  if (!widgetOptions.destination || !enabled) return
+async function initMarker(options: Options) {
+  if (!options.destination) return
   try {
-    await markerSDK.loadWidget(widgetOptions)
+    await markerSDK.loadWidget(options)
   } catch (e) {
     console.log(e)
   }

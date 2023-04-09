@@ -1,7 +1,7 @@
 {
   "name": "@bn-digital/sdk",
   "description": "SDK & utility used in BN Digital projects",
-  "version": "1.1.7",
+  "version": "1.3.0",
   "license": "MIT",
   "keywords": [
     "marker.io",
@@ -39,14 +39,14 @@
     "release": "yarn build && yarn npm publish"
   },
   "dependencies": {
-    "@marker.io/browser": "^0.12.0",
-    "@sentry/browser": "^6.16.1",
-    "@sentry/react": "^6.16.1",
-    "@sentry/tracing": "^6.16.1",
-    "@sentry/utils": "^6.16.1",
-    "web-vitals": "^2.1.4"
+    "@marker.io/browser": "^0.16.0",
+    "@sentry/browser": "^7.47.0",
+    "@sentry/react": "^7.47.0",
+    "@sentry/tracing": "^7.47.0",
+    "@sentry/utils": "^7.47.0",
+    "web-vitals": "^3.3.1"
   },
   "devDependencies": {
-    "typescript": "^4.5.5"
+    "typescript": "^5.0.4"
   }
 }

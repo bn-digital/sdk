@@ -1,12 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@bn-digital/typescript-config/standard",
   "compilerOptions": {
+    "module": "CommonJS",
     "baseUrl": ".",
-    "resolveJsonModule": true,
-    "lib": ["DOM"],
     "outDir": "dist",
-    "declarationDir": "typings"
+    "ignoreDeprecations": "5.0",
+    "types": [
+      "types.d.ts"
+    ]
   },
-  "files": ["package.json"],
-  "include": ["./src/**/*"]
+  "include": [
+    "**/*.d.ts",
+    "./src"
+  ]
 }

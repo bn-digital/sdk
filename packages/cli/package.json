@@ -1,49 +1,36 @@
 {
   "name": "@bn-digital/cli",
-  "description": "SDK & utility used in BN Digital projects",
-  "version": "1.0.0",
-  "license": "MIT",
-  "bin": "bin/index.js",
-  "keywords": [
-    "marker.io"
-  ],
-  "types": "typings",
-  "main": "dist/index.js",
-  "files": [
-    "dist",
-    "typings"
-  ],
+  "description": "BN Digital CLI tool",
+  "version": "1.0.8",
+  "bin": {
+    "bn": "./bin/bn.js"
+  },
+  "main": "./dist/index.js",
   "publishConfig": {
     "access": "public"
   },
-  "author": {
-    "name": "Vlad Volkov",
-    "email": "vlad.volkov@bndigital.co",
-    "url": "https://github.com/vladyslavvolkov"
-  },
-  "repository": {
-    "url": "https://github.com/bn-digital/sdk",
-    "directory": "packages/sdk"
-  },
-  "maintainers": [
-    {
-      "name": "BN Enginseer",
-      "email": "dev@bndigital.co",
-      "url": "https://github.com/bn-enginseer"
-    }
+  "files": [
+    "bin",
+    "dist"
   ],
-  "scripts": {
-    "build": "tsc -p .",
-    "bn": "ts-node src/index.ts",
-    "release": "yarn build && yarn npm publish"
+  "prettier": "@bn-digital/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@bn-digital/eslint-config/typescript"
+    ]
   },
   "dependencies": {
-    "@octokit/graphql": "^4.8.0",
-    "commander": "^8.3.0"
+    "chalk": "^4.1.2",
+    "commander": "^10.0.0",
+    "inquirer": "^8.2.5"
   },
   "devDependencies": {
-    "@types/node": "^17.0.8",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "@types/inquirer": "^8.2.6",
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "publish": "yarn build && yarn npm publish",
+    "start": "yarn build && node bin/bn.js lint env,packages"
   }
 }
